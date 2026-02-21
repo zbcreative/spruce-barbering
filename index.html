@@ -63,7 +63,7 @@
         },
         "priceRange": "$$",
         "currenciesAccepted": "USD",
-        "paymentAccepted": "Cash, Visa, MasterCard, Discover",
+        "paymentAccepted": "Cash, Venmo",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "8654 Veterans Memorial Parkway, Suite 113",
@@ -194,7 +194,7 @@
                 "name": "What is the best barbershop in O'Fallon, MO?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Spruce Barbering is widely recognized as one of the best barbershops in O'Fallon, Missouri. Located at 8654 Veterans Memorial Parkway, Suite 113, Spruce Barbering offers over 12 years of industry experience with specialties in custom haircuts, straight razor fades, custom design work, steam towel face shaves, and waxing services. The shop is appointment-only and accepts Visa, MasterCard, Discover, and cash."
+                    "text": "Spruce Barbering is widely recognized as one of the best barbershops in O'Fallon, Missouri. Located at 8654 Veterans Memorial Parkway, Suite 113, Spruce Barbering offers over 12 years of industry experience with specialties in custom haircuts, straight razor fades, custom design work, steam towel face shaves, and waxing services. The shop is appointment-only and accepts Cash and Venmo."
                 }
             },
             {
@@ -234,7 +234,7 @@
                 "name": "What forms of payment does Spruce Barbering accept?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Spruce Barbering accepts Visa, MasterCard, Discover, and cash payments."
+                    "text": "Spruce Barbering accepts Cash and Venmo."
                 }
             }
         ]
@@ -518,9 +518,62 @@
             background: var(--color-cream);
             transition: all 0.3s ease;
         }
-        .nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .nav-toggle.active span:nth-child(2) { opacity: 0; }
-        .nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #0A0A0A;
+            z-index: 9999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .mobile-menu.open {
+            display: flex;
+        }
+        .mobile-menu-close {
+            position: absolute;
+            top: 22px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: var(--color-cream);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 8px;
+            line-height: 1;
+        }
+        .mobile-menu a {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-cream-muted);
+            padding: 14px 0;
+            transition: color 0.3s ease;
+        }
+        .mobile-menu a:hover {
+            color: var(--color-gold);
+        }
+        .mobile-menu .mobile-menu-cta {
+            margin-top: 16px;
+            padding: 14px 40px;
+            background: var(--color-gold);
+            color: var(--color-bg) !important;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+        }
+        .mobile-menu .mobile-menu-cta:hover {
+            background: var(--color-gold-light);
+        }
 
         /* ========================================
            HERO SECTION
@@ -1222,22 +1275,6 @@
         @media (max-width: 968px) {
             .nav-links { display: none; }
             .nav-toggle { display: flex; }
-            .nav-links.mobile-open {
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                top: 76px;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(10, 10, 10, 0.98);
-                padding: 40px 24px;
-                gap: 24px;
-                z-index: 999;
-                animation: fadeIn 0.3s ease;
-            }
-            .nav-links.mobile-open a { font-size: 1rem; }
-            .nav-cta.mobile-open { display: inline-block; text-align: center; }
             .about-grid { grid-template-columns: 1fr; gap: 48px; }
             .about-visual { order: -1; }
             .experience-grid { grid-template-columns: 1fr; }
@@ -1288,6 +1325,17 @@
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation menu">
+        <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Close menu">✕</button>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#faq">FAQ</a>
+        <a href="#location">Location</a>
+        <a href="https://www.vagaro.com/sprucebarbering" target="_blank" rel="noopener noreferrer" class="mobile-menu-cta">Book Now</a>
+    </div>
 
     <!-- ============================================
          HERO
@@ -1579,7 +1627,7 @@
                             <div class="faq-icon" aria-hidden="true"></div>
                         </button>
                         <div class="faq-answer" role="region">
-                            <div class="faq-answer-inner">Spruce Barbering accepts Visa, MasterCard, Discover, and cash. The shop also features disabled access, free parking, WiFi, and complimentary beer and wine for clients during their appointment.</div>
+                            <div class="faq-answer-inner">Spruce Barbering accepts Cash and Venmo. The shop also features disabled access, free parking, WiFi, and complimentary beer and wine for clients during their appointment.</div>
                         </div>
                     </div>
                 </div>
@@ -1656,7 +1704,7 @@
                             </div>
                             <div class="location-detail">
                                 <span class="location-detail-icon" aria-hidden="true">💳</span>
-                                <span>Visa, MasterCard, Discover &amp; Cash</span>
+                                <span>Cash &amp; Venmo</span>
                             </div>
                         </div>
                         <a href="https://www.vagaro.com/sprucebarbering" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book Your Appointment</a>
@@ -1756,22 +1804,25 @@
             nav.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Mobile menu toggle
+        // Mobile menu
         const navToggle = document.getElementById('navToggle');
-        const navLinks = document.getElementById('navLinks');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+
         navToggle.addEventListener('click', () => {
-            const isOpen = navLinks.classList.toggle('mobile-open');
-            navToggle.classList.toggle('active');
-            navToggle.setAttribute('aria-expanded', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
         });
 
         // Close mobile menu on link click
-        navLinks.querySelectorAll('a').forEach(link => {
+        mobileMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-open');
-                navToggle.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
+                mobileMenu.classList.remove('open');
                 document.body.style.overflow = '';
             });
         });
