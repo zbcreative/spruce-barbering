@@ -608,6 +608,27 @@
             margin: 0 auto;
             padding: 0 24px;
             width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+        .hero-text {
+            /* left column */
+        }
+        .hero-illustration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        .hero-illustration svg {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            opacity: 0;
+            animation: fadeUp 1s 1s var(--transition-smooth) forwards;
+            filter: drop-shadow(0 0 40px rgba(191, 155, 94, 0.08));
         }
         .hero-badge {
             display: inline-flex;
@@ -1275,6 +1296,8 @@
         @media (max-width: 968px) {
             .nav-links { display: none; }
             .nav-toggle { display: flex; }
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-illustration { display: none; }
             .about-grid { grid-template-columns: 1fr; gap: 48px; }
             .about-visual { order: -1; }
             .experience-grid { grid-template-columns: 1fr; }
@@ -1346,6 +1369,7 @@
         <div class="hero-corner hero-corner--tl" aria-hidden="true"></div>
         <div class="hero-corner hero-corner--br" aria-hidden="true"></div>
         <div class="hero-content">
+            <div class="hero-text">
             <div class="hero-badge">
                 <div class="hero-badge-dot" aria-hidden="true"></div>
                 <span class="hero-badge-text">O'Fallon, Missouri's Premier Barbershop</span>
@@ -1355,6 +1379,131 @@
             <div class="hero-actions">
                 <a href="https://www.vagaro.com/sprucebarbering" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book Your Appointment</a>
                 <a href="#services" class="btn btn-outline">View Services</a>
+            </div>
+            </div>
+            <div class="hero-illustration" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+                    <defs>
+                        <linearGradient id="poleGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#BF9B5E" stop-opacity="0.9"/>
+                            <stop offset="100%" stop-color="#9A7B45" stop-opacity="0.9"/>
+                        </linearGradient>
+                        <linearGradient id="stripeRed" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#8B3A3A"/>
+                            <stop offset="100%" stop-color="#6B2A2A"/>
+                        </linearGradient>
+                        <linearGradient id="stripeBlue" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#3A4A6B"/>
+                            <stop offset="100%" stop-color="#2A3A5B"/>
+                        </linearGradient>
+                        <linearGradient id="metalGrad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#E8DCC8" stop-opacity="0.15"/>
+                            <stop offset="50%" stop-color="#BF9B5E" stop-opacity="0.08"/>
+                            <stop offset="100%" stop-color="#E8DCC8" stop-opacity="0.15"/>
+                        </linearGradient>
+                        <clipPath id="poleClip">
+                            <rect x="148" y="65" width="64" height="310" rx="6"/>
+                        </clipPath>
+                    </defs>
+
+                    <!-- Barber Pole -->
+                    <!-- Top cap -->
+                    <ellipse cx="180" cy="60" rx="38" ry="10" fill="url(#poleGrad)" opacity="0.9"/>
+                    <rect x="142" y="50" width="76" height="15" rx="4" fill="url(#poleGrad)" opacity="0.9"/>
+                    <ellipse cx="180" cy="50" rx="38" ry="10" fill="#D4B87A" opacity="0.95"/>
+                    <!-- Decorative knob -->
+                    <ellipse cx="180" cy="42" rx="12" ry="6" fill="url(#poleGrad)"/>
+                    <circle cx="180" cy="36" r="8" fill="#D4B87A" opacity="0.9"/>
+
+                    <!-- Pole body background -->
+                    <rect x="148" y="65" width="64" height="310" rx="6" fill="#1e1e1e" stroke="rgba(191,155,94,0.3)" stroke-width="1"/>
+
+                    <!-- Animated stripes - pattern repeats every 60px, animation shifts exactly -60px -->
+                    <g clip-path="url(#poleClip)">
+                        <g>
+                            <animateTransform attributeName="transform" type="translate" from="0 0" to="0 -60" dur="2s" repeatCount="indefinite"/>
+                            <rect x="148" y="5" width="64" height="20" fill="#E8DCC8" opacity="0.9"/>
+                            <rect x="148" y="25" width="64" height="20" fill="url(#stripeRed)" opacity="0.85"/>
+                            <rect x="148" y="45" width="64" height="20" fill="url(#stripeBlue)" opacity="0.8"/>
+                            <rect x="148" y="65" width="64" height="20" fill="#E8DCC8" opacity="0.9"/>
+                            <rect x="148" y="85" width="64" height="20" fill="url(#stripeRed)" opacity="0.85"/>
+                            <rect x="148" y="105" width="64" height="20" fill="url(#stripeBlue)" opacity="0.8"/>
+                            <rect x="148" y="125" width="64" height="20" fill="#E8DCC8" opacity="0.9"/>
+                            <rect x="148" y="145" width="64" height="20" fill="url(#stripeRed)" opacity="0.85"/>
+                            <rect x="148" y="165" width="64" height="20" fill="url(#stripeBlue)" opacity="0.8"/>
+                            <rect x="148" y="185" width="64" height="20" fill="#E8DCC8" opacity="0.9"/>
+                            <rect x="148" y="205" width="64" height="20" fill="url(#stripeRed)" opacity="0.85"/>
+                            <rect x="148" y="225" width="64" height="20" fill="url(#stripeBlue)" opacity="0.8"/>
+                            <rect x="148" y="245" width="64" height="20" fill="#E8DCC8" opacity="0.9"/>
+                            <rect x="148" y="265" width="64" height="20" fill="url(#stripeRed)" opacity="0.85"/>
+                            <rect x="148" y="285" width="64" height="20" fill="url(#stripeBlue)" opacity="0.8"/>
+                            <rect x="148" y="305" width="64" height="20" fill="#E8DCC8" opacity="0.9"/>
+                            <rect x="148" y="325" width="64" height="20" fill="url(#stripeRed)" opacity="0.85"/>
+                            <rect x="148" y="345" width="64" height="20" fill="url(#stripeBlue)" opacity="0.8"/>
+                            <rect x="148" y="365" width="64" height="20" fill="#E8DCC8" opacity="0.9"/>
+                            <rect x="148" y="385" width="64" height="20" fill="url(#stripeRed)" opacity="0.85"/>
+                            <rect x="148" y="405" width="64" height="20" fill="url(#stripeBlue)" opacity="0.8"/>
+                            <rect x="148" y="425" width="64" height="20" fill="#E8DCC8" opacity="0.9"/>
+                            <rect x="148" y="445" width="64" height="20" fill="url(#stripeRed)" opacity="0.85"/>
+                            <rect x="148" y="465" width="64" height="20" fill="url(#stripeBlue)" opacity="0.8"/>
+                        </g>
+                    </g>
+
+                    <!-- Glass reflection overlay -->
+                    <rect x="155" y="70" width="18" height="295" rx="3" fill="url(#metalGrad)" opacity="0.4"/>
+
+                    <!-- Bottom cap -->
+                    <rect x="142" y="370" width="76" height="15" rx="4" fill="url(#poleGrad)" opacity="0.9"/>
+                    <ellipse cx="180" cy="385" rx="38" ry="10" fill="#9A7B45" opacity="0.8"/>
+                    <!-- Base -->
+                    <rect x="155" y="385" width="50" height="20" rx="3" fill="url(#poleGrad)" opacity="0.7"/>
+                    <rect x="160" y="400" width="40" height="8" rx="2" fill="#9A7B45" opacity="0.6"/>
+
+                    <!-- Clippers - positioned to the right of pole, slightly overlapping -->
+                    <g transform="translate(240, 180) rotate(15)">
+                        <!-- Clipper body -->
+                        <rect x="0" y="0" width="42" height="120" rx="8" fill="#1e1e1e" stroke="rgba(191,155,94,0.4)" stroke-width="1"/>
+                        <!-- Top housing -->
+                        <rect x="-2" y="-5" width="46" height="40" rx="10" fill="#242424" stroke="rgba(191,155,94,0.3)" stroke-width="1"/>
+                        <!-- Power button -->
+                        <rect x="16" y="48" width="10" height="16" rx="3" fill="url(#poleGrad)" opacity="0.8"/>
+                        <!-- Brand line -->
+                        <rect x="12" y="72" width="18" height="2" rx="1" fill="rgba(191,155,94,0.3)"/>
+                        <rect x="8" y="78" width="26" height="2" rx="1" fill="rgba(191,155,94,0.2)"/>
+                        <!-- Side texture lines -->
+                        <line x1="5" y1="90" x2="37" y2="90" stroke="rgba(191,155,94,0.12)" stroke-width="0.5"/>
+                        <line x1="5" y1="94" x2="37" y2="94" stroke="rgba(191,155,94,0.12)" stroke-width="0.5"/>
+                        <line x1="5" y1="98" x2="37" y2="98" stroke="rgba(191,155,94,0.12)" stroke-width="0.5"/>
+                        <!-- Blade -->
+                        <rect x="-4" y="118" width="50" height="8" rx="2" fill="#BF9B5E" opacity="0.7"/>
+                        <rect x="-6" y="124" width="54" height="12" rx="2" fill="#9A7B45" opacity="0.6"/>
+                        <!-- Blade teeth -->
+                        <g fill="#BF9B5E" opacity="0.5">
+                            <rect x="-4" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="1" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="6" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="11" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="16" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="21" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="26" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="31" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="36" y="134" width="3" height="5" rx="0.5"/>
+                            <rect x="41" y="134" width="3" height="5" rx="0.5"/>
+                        </g>
+                        <!-- Metallic reflection -->
+                        <rect x="6" y="2" width="8" height="115" rx="3" fill="url(#metalGrad)" opacity="0.3"/>
+                    </g>
+
+                    <!-- Decorative elements -->
+                    <!-- Small diamond accent -->
+                    <rect x="128" y="220" width="8" height="8" rx="1" fill="none" stroke="rgba(191,155,94,0.25)" stroke-width="1" transform="rotate(45, 132, 224)"/>
+                    <rect x="225" y="140" width="6" height="6" rx="1" fill="none" stroke="rgba(191,155,94,0.2)" stroke-width="1" transform="rotate(45, 228, 143)"/>
+
+                    <!-- Subtle gold sparkle dots -->
+                    <circle cx="120" cy="100" r="1.5" fill="#BF9B5E" opacity="0.3"/>
+                    <circle cx="260" cy="360" r="1.5" fill="#BF9B5E" opacity="0.25"/>
+                    <circle cx="300" cy="120" r="1" fill="#BF9B5E" opacity="0.2"/>
+                </svg>
             </div>
         </div>
         <div class="hero-scroll" aria-hidden="true">
